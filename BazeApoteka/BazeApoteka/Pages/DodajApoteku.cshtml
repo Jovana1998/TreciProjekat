@@ -1,0 +1,17 @@
+﻿@page
+@model BazeApoteka.Pages.DodajApotekuModel
+@{
+    ViewData["Title"] = "DodajApoteku";
+}
+
+    <form method="post">
+        <div>Naziv apoteke:</div>
+        <input type="text" asp-for="@Model.Apoteka.Naziv" />
+        <div>Adresa apoteke:</div>
+        <input type="text" asp-for="@Model.Apoteka.Adresa" />
+        <div>Registarski broj apoteke:</div>
+        <input type="text" asp-for="@Model.Apoteka.RegistarskiBroj" />
+
+        <input type="submit" value="Dodaj" asp-page-handler="Dodaj" />
+    </form>
+

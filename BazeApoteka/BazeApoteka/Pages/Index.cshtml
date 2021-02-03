@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+    <form method="post">
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>
+        @foreach (BazeApoteka.Entiteti.Lek a in Model.model)
+        {
+            <div>
+                ovov je : @a.Dejstvo
+            </div>
+        }
+    <input type="submit" value="Admin" asp-page="./Admin" />
+    </form>

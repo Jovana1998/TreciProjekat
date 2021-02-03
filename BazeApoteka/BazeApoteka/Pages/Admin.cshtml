@@ -1,0 +1,14 @@
+﻿@page
+@model BazeApoteka.Pages.AdminModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+    <form method="post">
+        <input type="submit" value="Dodaj apoteku" asp-page="./DodajApoteku" />
+        <input type="submit" value="Izmeni apoteku" asp-page="./IzmeniApoteku" />
+        <input type="submit" value="Obrisi apoteku" asp-page="./ObrisApoteku" />
+        <input type="submit" value="Ucitaj apoteku" asp-page="./UcitajApoteku" />
+        <input type="submit" value="Ucitaj sve apoteke" asp-page="./UcitajSveApoteke" />
+    </form>
+

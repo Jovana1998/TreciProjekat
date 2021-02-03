@@ -1,0 +1,17 @@
+﻿@page "{id}"
+@model BazeApoteka.Pages.DodajFarmaceutaModel
+@{
+    ViewData["Title"] = "DodajFarmaceuta";
+}
+
+    <form method="post">
+        <input type="hidden" id="id" asp-for="@Model.Prosledjeno" />
+        <div>Ime:</div>
+        <input type="text" asp-for="@Model.Farmaceut.Ime" />
+        <div>Prezime:</div>
+        <input type="text" asp-for="@Model.Farmaceut.Prezime" />
+        <div>Plata:</div>
+        <input type="text" asp-for="@Model.Farmaceut.Plata" />
+
+        <input type="submit" value="Dodaj" asp-page-handler="Dodaj" />
+    </form>
