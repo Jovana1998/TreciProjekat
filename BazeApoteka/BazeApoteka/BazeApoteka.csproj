@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="mongocsharpdriver" Version="2.11.6" />
     <PackageReference Include="MongoDB.Bson" Version="2.11.6" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.6" />
     <PackageReference Include="MongoDB.Thin" Version="1.0.0" />
   </ItemGroup>
 

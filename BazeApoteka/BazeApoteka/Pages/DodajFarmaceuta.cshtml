@@ -13,5 +13,5 @@
         <div>Plata:</div>
         <input type="text" asp-for="@Model.Farmaceut.Plata" />
 
-        <input type="submit" value="Dodaj" asp-page-handler="Dodaj" />
+        <input type="submit" value="Dodaj" asp-page-handler="Dodaj" asp-route-pom="@Model.Prosledjeno" />
     </form>
