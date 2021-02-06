@@ -1,18 +1,18 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Apoteka";
 }
-    <form method="post">
-        <div class="text-center">
-            <h1 class="display-4">Welcome</h1>
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        </div>
-        @foreach (BazeApoteka.Entiteti.Lek a in Model.model)
-        {
-            <div>
-                ovov je : @a.Dejstvo
-            </div>
-        }
-    <input type="submit" value="Admin" asp-page="./Admin" />
-    </form>
+<form method="post">
+    <div class="text-center">
+        <br />
+        <h1 class="display-4">Dobrodošli!</h1>
+        <br />
+    </div>
+    <div class="text-center">
+        <input type="submit" value="Admin" asp-page="./Admin" />
+        <input type="submit" value="Lekar" asp-page="./Lekar" />
+        <input type="submit" value="Farmaceut" asp-page="./Farmaceut" />
+        <input type="submit" value="Korisnik" asp-page="./Korisnik" />
+    </div>
+</form>

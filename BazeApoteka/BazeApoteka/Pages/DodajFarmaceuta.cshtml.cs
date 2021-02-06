@@ -18,18 +18,16 @@ namespace BazeApoteka.Pages
 {
     public class DodajFarmaceutaModel : PageModel
     {
-        //[BindProperty]
-        //public ObjectId IdApoteke { get; set; }
         [BindProperty]
         public Farmaceut Farmaceut { get; set; }
         [BindProperty]
         public String Prosledjeno { get; set; }
+        
         public IMongoCollection<Farmaceut> collection { get; set; }
         
         public IActionResult OnGet([FromRoute]String id)
         {
             Prosledjeno = id;
-            //IdApoteke = ObjectId.Parse(id);
             return Page();
         }
         public IActionResult OnPost([FromRoute]String id)
@@ -43,7 +41,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka");
+            var database = client.GetDatabase("Apoteka2");
 
 
             collection = database.GetCollection<Farmaceut>("farmaceuti");
@@ -75,7 +73,7 @@ namespace BazeApoteka.Pages
 
 
 
-            return Page();
+            return RedirectToPage();
             }
         }
     }

@@ -9,9 +9,7 @@
         <input type="hidden" id="id" asp-for="@Model.Prosledjeno" />
 
         <input type="submit" value="Dodaj lek" asp-page="./DodajLek" asp-route-id="@Model.Prosledjeno" />
-
         <input type="submit" value="Dodaj farmaceuta" asp-page-handler="DodajFarmaceuta" />
-        <input type="submit" value="Dodaj farmaceuta 2" asp-page="./DodajFarmaceuta" asp-route-id="@Model.Prosledjeno"/>
         <input type="submit" value="Nazad" asp-page="./DodajApoteku" />
 
 

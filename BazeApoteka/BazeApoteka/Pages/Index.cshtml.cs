@@ -24,15 +24,7 @@ namespace BazeApoteka.Pages
 
         public void OnGet()
         {
-            var connectionString = "mongodb://localhost/?safe=true";
-            var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka");
-
-             collection = database.GetCollection<Lek>("lekovi");
-            Lek lekic = new Lek { GenerickiNaziv = "Petar", KomercijaniNaziv = "Petrović", DaLiJeNaRecept = "Oblačića Rada 12", Dejstvo = "25000" };
-            collection.InsertOne(lekic);
-
-            model = collection.Find(FilterDefinition<Lek>.Empty).ToList();
+            
 
             
         }

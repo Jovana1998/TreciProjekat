@@ -1,0 +1,24 @@
+﻿@page
+@model BazeApoteka.Pages.UcitajSveLekoveModel
+@{
+}
+<form method="post">
+    <div>
+        <h2>Lista svih lekova u svim apotekama</h2>
+    </div>
+    <br />
+    <br />
+    @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
+    {
+        <div>
+                @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
+                <div>@l.Dejstvo</div>
+        </div>
+        <br />
+        <div>_____________________________________________</div>
+        <br />
+    }
+    <div>
+        <input type="submit" value="Nazad" asp-page="./Admin" />
+    </div>
+</form>
