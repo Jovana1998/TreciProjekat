@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,13 +11,16 @@ using MongoDB.Driver.Linq;
 
 namespace BazeApoteka.Pages
 {
-    public class FarmaceutModel : PageModel
+    public class PrikazFarmaceutaModel : PageModel
     {
+        [BindProperty]
+        public String Prosledjeno { get; set; }
         public IMongoCollection<Farmaceut> collection { get; set; }
         [BindProperty]
-        public List<Farmaceut> farmaceuti { get; set; }
-        public void OnGet()
+        public List<Farmaceut> l { get; set; }
+        public void OnGet([FromRoute] String id)
         {
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka2");
@@ -25,23 +28,27 @@ namespace BazeApoteka.Pages
 
             collection = database.GetCollection<Farmaceut>("farmaceuti");
 
-            farmaceuti = collection.Find(FilterDefinition<Farmaceut>.Empty).ToList();
+            //farmaceuti = collection.Find(FilterDefinition<Farmaceut>.Empty).ToList();
+
+            ObjectId iid = ObjectId.Parse(Prosledjeno);
+            l = collection.Find(x => x.Id == iid).ToList();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost([FromRoute] String id)
         {
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka2");
 
 
             collection = database.GetCollection<Farmaceut>("farmaceuti");
-            farmaceuti = collection.Find(FilterDefinition<Farmaceut>.Empty).ToList();
+
+            //farmaceuti = collection.Find(FilterDefinition<Farmaceut>.Empty).ToList();
+
+            ObjectId iid = ObjectId.Parse(Prosledjeno);
+            l = collection.Find(x => x.Id == iid).ToList();
+
             return Page();
-        }
-
-        public IActionResult OnPostUlogujSe(String tt)
-        {
-            return RedirectToPage("./PrikazFarmaceuta", new { id = tt });
         }
     }
 }

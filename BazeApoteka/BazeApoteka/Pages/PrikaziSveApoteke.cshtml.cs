@@ -28,6 +28,7 @@ namespace BazeApoteka.Pages
             collection = database.GetCollection<Apoteka>("apoteke");
 
             apoteke = collection.Find(FilterDefinition<Apoteka>.Empty).ToList();
+
         }
         public IActionResult OnPost()
         {

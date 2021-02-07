@@ -262,3 +262,5 @@ C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\UcitajSveFarmaceute.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\DodajFarmaceuta2.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\DodajLek2.cshtml.g.cs
+C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\PrikazFarmaceuta.cshtml.g.cs
+C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\DostupniLekovi.cshtml.g.cs
