@@ -16,5 +16,10 @@ namespace BazeApoteka.Entiteti
         public float BrojZdravstveneKnjizice { get; set; }
         public MongoDBRef Doktor { get; set; }
         public List<MongoDBRef> Recepti { get; set; }
+
+        public Korisnik()
+        {
+            Recepti = new List<MongoDBRef>();
+        }
     }
 }

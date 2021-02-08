@@ -18,8 +18,16 @@ namespace BazeApoteka.Pages
     {
         [BindProperty]
         public Lek Lek { get; set; }
-
-        public IMongoCollection<Lek> collection { get; set; }
+        [BindProperty]
+        public Lek Lek2 { get; set; }
+        [BindProperty]
+        public Apoteka Apoteka { get; set; }
+        [BindProperty]
+        public Apoteka Apoteka2 { get; set; }
+        public IMongoCollection<Lek> collectionL { get; set; }
+        public IMongoCollection<Apoteka> collectionA { get; set; }
+        [BindProperty]
+        public List<MongoDBRef> lekovii { get; set; }
         public IActionResult OnGet([FromRoute] String id)
         {
             return Page();
@@ -33,14 +41,23 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var server = client.GetServer();
+            var database = client.GetDatabase("Apoteka3");
 
+            collectionL = database.GetCollection<Lek>("lekovi");
+            collectionA = database.GetCollection<Apoteka>("apoteke");
+            Apoteka2 = collectionA.Find(x => x.RegistarskiBroj == Apoteka.RegistarskiBroj).FirstOrDefault();
+            Lek.MojaApoteka = new MongoDBRef("apoteke",Apoteka2.Id);
+            collectionL.InsertOne(Lek);
 
-            collection = database.GetCollection<Lek>("lekovi");
+            Lek2 = collectionL.Find(x => x.KomercijaniNaziv == Lek.KomercijaniNaziv).FirstOrDefault();
 
-
-            
-            collection.InsertOne(Lek);
+            lekovii = new List<MongoDBRef>();
+            lekovii = Apoteka2.Lekovi;
+            lekovii.Add(new MongoDBRef("lekovi",Lek.Id));
+            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka2.Id);
+            var operation = Builders<Apoteka>.Update.Set(u => u.Lekovi, lekovii);
+            database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
 
             //fali da se doda referenca kod apoteke na lek i da vidimo u koju apoteku se dodaje
 

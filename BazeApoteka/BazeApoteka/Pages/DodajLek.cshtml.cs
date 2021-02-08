@@ -51,6 +51,10 @@ namespace BazeApoteka.Pages
             Lek.MojaApoteka = new MongoDBRef("apoteke", jj);
             collection.InsertOne(Lek);
 
+            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, jj);
+            var operation = Builders<Apoteka>.Update.Set(u => u.Naziv, "Benu2");
+            database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
+
             //fali da se doda referenca kod apoteke na lek
 
             return RedirectToPage();

@@ -14,5 +14,10 @@ namespace BazeApoteka.Entiteti
         public string Prezime { get; set; }
         public string UstanovaGdeRadi { get; set; }
         public List<MongoDBRef> Pacijenti { get; set; }
+
+        public Lekar()
+        {
+            Pacijenti = new List<MongoDBRef>();
+        }
     }
 }

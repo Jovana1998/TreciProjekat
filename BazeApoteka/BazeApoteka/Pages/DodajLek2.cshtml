@@ -24,7 +24,9 @@
     <input type="text" asp-for="@Model.Lek.Indikacije" />
     <div>Kontraindikacije:</div>
     <input type="text" asp-for="@Model.Lek.Kontraindikacije" />
-
+    <br />
+    <div>Registarski broj apoteke u kojoj zelite da dodate novi lek:</div>
+    <input type="text" asp-for="@Model.Apoteka.RegistarskiBroj" />
     <div>
         <br />
         <input type="submit" value="Dodaj" asp-page-handler="Dodaj" />

@@ -15,5 +15,11 @@ namespace BazeApoteka.Entiteti
         public string RegistarskiBroj { get; set; }
         public List<MongoDBRef> Lekovi { get; set; }
         public List<MongoDBRef> Farmaceuti { get; set; }
+
+        public Apoteka()
+        {
+            Lekovi = new List<MongoDBRef>();
+            Farmaceuti = new List<MongoDBRef>();
+        }
     }
 }
