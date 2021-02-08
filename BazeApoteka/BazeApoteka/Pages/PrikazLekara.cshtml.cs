@@ -8,16 +8,18 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using BazeApoteka.Entiteti;
 using MongoDB.Driver.Linq;
-
 namespace BazeApoteka.Pages
 {
-    public class LekarModel : PageModel
+    public class PrikazLekaraModel : PageModel
     {
+        [BindProperty]
+        public String Prosledjeno { get; set; }
         public IMongoCollection<Lekar> collection { get; set; }
         [BindProperty]
         public List<Lekar> lekari { get; set; }
-        public void OnGet()
+        public void OnGet([FromRoute] String id)
         {
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka2");
@@ -25,23 +27,23 @@ namespace BazeApoteka.Pages
 
             collection = database.GetCollection<Lekar>("lekari");
 
-            lekari = collection.Find(FilterDefinition<Lekar>.Empty).ToList();
+            ObjectId iid = ObjectId.Parse(Prosledjeno);
+            lekari = collection.Find(x => x.Id == iid).ToList();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost([FromRoute] String id)
         {
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka2");
 
 
             collection = database.GetCollection<Lekar>("lekari");
-            lekari = collection.Find(FilterDefinition<Lekar>.Empty).ToList();
+
+            ObjectId iid = ObjectId.Parse(Prosledjeno);
+            lekari = collection.Find(x => x.Id == iid).ToList();
+
             return Page();
-        }
-
-        public IActionResult OnPostUlogujSe(String tt)
-        {
-            return RedirectToPage("./PrikazLekara", new { id = tt });
         }
     }
 }
