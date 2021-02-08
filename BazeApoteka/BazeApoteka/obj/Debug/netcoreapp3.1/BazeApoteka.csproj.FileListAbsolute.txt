@@ -281,3 +281,4 @@ C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\FarmaceutPoImenu.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\FarmaceutPoPlati.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\FarmaceutPoPrezimenu.cshtml.g.cs
+C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\DodajLekF.cshtml.g.cs
