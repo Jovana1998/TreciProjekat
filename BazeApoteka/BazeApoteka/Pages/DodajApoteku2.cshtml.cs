@@ -13,15 +13,11 @@ namespace BazeApoteka.Pages
     {
         [BindProperty]
         public String Prosledjeno { get; set; }
-
-        //[BindProperty]
-        //public ObjectId IdApoteke { get; set; }
        
         public IActionResult OnGet([FromRoute]String id)
         
         {
              Prosledjeno = id;
-             //IdApoteke = ObjectId.Parse(id);
              return Page();
             
         }
