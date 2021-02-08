@@ -1,4 +1,21 @@
-﻿@page
+﻿@page "{idK}"
 @model BazeApoteka.Pages.KupiLekModel
 @{
 }
+<form method="post">
+    <input type="hidden" id="idK" asp-for="@Model.Korisnik.BrojZdravstveneKnjizice" />
+    <div>
+        @foreach (BazeApoteka.Entiteti.Korisnik k in Model.korisnici)
+        {
+            <div>
+                @k.Ime
+            </div>
+        }
+        @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
+        {
+            <div>
+                @l.GenerickiNaziv
+            </div>
+        }
+    </div>
+</form>

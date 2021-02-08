@@ -23,11 +23,34 @@ namespace BazeApoteka.Pages
         public IMongoCollection<Lek> collectionL { get; set; }
         [BindProperty]
         public List<Lek> lekovi { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var connectionString = "mongodb://localhost/?safe=true";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Apoteka2");
+
+            collectionL = database.GetCollection<Lek>("lekovi");
+            collectionK = database.GetCollection<Korisnik>("korisnici");
+
+            lekovi = collectionL.Find(x => x.Id == Lek.Id).ToList();
+            korisnici = collectionK.Find(x => x.Id == Korisnik.Id).ToList();
+
+            return Page();
         }
-        public IActionResult OnPost(String idL, String idK)
+        public IActionResult OnPost(String? idK, String? idL)
         {
+            Lek.Id = ObjectId.Parse(idL);
+            Korisnik.BrojZdravstveneKnjizice = float.Parse(idK);
+
+            var connectionString = "mongodb://localhost/?safe=true";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Apoteka2");
+
+            collectionL = database.GetCollection<Lek>("lekovi");
+            collectionK = database.GetCollection<Korisnik>("korisnici");
+
+            lekovi = collectionL.Find(x => x.Id == Lek.Id).ToList();
+            korisnici = collectionK.Find(x => x.BrojZdravstveneKnjizice == Korisnik.BrojZdravstveneKnjizice).ToList();
 
             return Page();
         }
