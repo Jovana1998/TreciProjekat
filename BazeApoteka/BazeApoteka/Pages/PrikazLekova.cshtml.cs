@@ -51,5 +51,11 @@ namespace BazeApoteka.Pages
             
             return Page();
         }
+
+        public IActionResult OnPostKupiLek(String id)
+        {
+            String idL = id;
+            return RedirectToPage();
+        }
     }
 }

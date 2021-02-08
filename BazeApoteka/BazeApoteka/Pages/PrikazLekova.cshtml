@@ -15,7 +15,10 @@
                 <div>
                     @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
                     <div>@l.Dejstvo</div>
+                    <br />
+                    <input type="submit" value="Kupi lek" asp-page="./KupiLek" asp-route-idL="@l.Id.ToString()" asp-route-idK="@Model.Prosledjeno" />
                 </div>
+                <br />
                 <br />
                 <div>_____________________________________________________</div>
                 <br />

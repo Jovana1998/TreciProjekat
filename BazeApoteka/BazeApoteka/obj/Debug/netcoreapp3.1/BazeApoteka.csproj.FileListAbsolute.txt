@@ -283,3 +283,4 @@ C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\FarmaceutPoPrezimenu.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\DodajLekF.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\PrikazLekara.cshtml.g.cs
+C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\KupiLek.cshtml.g.cs
