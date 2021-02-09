@@ -25,7 +25,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
 
             collection = database.GetCollection<Farmaceut>("farmaceuti");
@@ -36,7 +36,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
 
             collection = database.GetCollection<Farmaceut>("farmaceuti");
@@ -48,7 +48,7 @@ namespace BazeApoteka.Pages
 
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Farmaceut>("farmaceuti");
             farmaceuti = collection.Find(x => x.Ime == Prosledjeno).ToList();
             foreach (Farmaceut f in farmaceuti)
