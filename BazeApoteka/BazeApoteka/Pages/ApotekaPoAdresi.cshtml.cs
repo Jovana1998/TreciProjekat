@@ -33,7 +33,7 @@ namespace BazeApoteka.Pages
             Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Apoteka>("apoteke");
             apoteke = collection.Find(x => x.Adresa == Prosledjeno).ToList();
             /*foreach(Apoteka a in apoteke)
@@ -48,7 +48,7 @@ namespace BazeApoteka.Pages
             Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Apoteka>("apoteke");
             apoteke = collection.Find(x => x.Adresa == Prosledjeno).ToList();
             return Page();

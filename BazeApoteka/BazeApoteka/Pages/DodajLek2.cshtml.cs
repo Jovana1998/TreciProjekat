@@ -59,8 +59,6 @@ namespace BazeApoteka.Pages
             var operation = Builders<Apoteka>.Update.Set(u => u.Lekovi, lekovii);
             database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
 
-            //fali da se doda referenca kod apoteke na lek i da vidimo u koju apoteku se dodaje
-
             return RedirectToPage();
         }
     }

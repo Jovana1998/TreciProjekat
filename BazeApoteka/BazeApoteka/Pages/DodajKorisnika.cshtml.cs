@@ -29,7 +29,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
 
             l = database.GetCollection<Lekar>("lekari");
@@ -40,7 +40,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
 
             l = database.GetCollection<Lekar>("lekari");
@@ -53,19 +53,13 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
 
             collection = database.GetCollection<Korisnik>("korisnici");
-            //ObjectId o = ObjectId.Parse(idL);
-            //Korisnik.Doktor = new MongoDBRef("lekari", o);
             collection.InsertOne(Korisnik);
 
-            //Ovde sam mislila da korisnik pomocu select liste odabere lekara
-            //Ali sam zaboravila kako da pokupim iz selekt liste neku vrednost
-            //Treba da se istrazi, mada mislim da ce i ovde da nam trega f-ja finds
-
-            return RedirectToPage();
+            return RedirectToPage("./IzaberiLekara", new { id = Korisnik.Id });
         }
     }
 }

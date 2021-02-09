@@ -18,8 +18,13 @@ namespace BazeApoteka.Pages
     {
         [BindProperty]
         public Farmaceut Farmaceut { get; set; }
-
-        public IMongoCollection<Farmaceut> collection { get; set; }
+        [BindProperty]
+        public Apoteka Apoteka { get; set; }
+        [BindProperty]
+        public Apoteka Apoteka2 { get; set; }
+        public List<MongoDBRef> farmaceuti { get; set; }
+        public IMongoCollection<Farmaceut> collectionF { get; set; }
+        public IMongoCollection<Apoteka> collectionA { get; set; }
 
         public IActionResult OnGet([FromRoute] String id)
         {
@@ -36,12 +41,22 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
+            collectionF = database.GetCollection<Farmaceut>("farmaceuti");
+            collectionA = database.GetCollection<Apoteka>("apoteke");
 
-            collection = database.GetCollection<Farmaceut>("farmaceuti");
+            Apoteka2 = collectionA.Find(x => x.RegistarskiBroj == Apoteka.RegistarskiBroj).FirstOrDefault();
+            Farmaceut.MojaApoteka = new MongoDBRef("apoteke", Apoteka2.Id);
+            collectionF.InsertOne(Farmaceut);
 
-            collection.InsertOne(Farmaceut);
+            farmaceuti = new List<MongoDBRef>();
+            farmaceuti = Apoteka2.Farmaceuti;
+            farmaceuti.Add(new MongoDBRef("farmaceuti", Farmaceut.Id));
+            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka2.Id);
+            var operation = Builders<Apoteka>.Update.Set(u => u.Farmaceuti, farmaceuti);
+            database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
+
             return RedirectToPage();
         }
     }

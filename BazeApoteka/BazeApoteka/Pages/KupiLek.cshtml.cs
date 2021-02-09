@@ -27,7 +27,7 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionK = database.GetCollection<Korisnik>("korisnici");
@@ -44,7 +44,7 @@ namespace BazeApoteka.Pages
 
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionK = database.GetCollection<Korisnik>("korisnici");

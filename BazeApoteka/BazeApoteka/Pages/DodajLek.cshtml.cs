@@ -20,8 +20,12 @@ namespace BazeApoteka.Pages
         public Lek Lek { get; set; }
         [BindProperty]
         public String Prosledjeno { get; set; }
-        
-        public IMongoCollection<Lek> collection { get; set; }
+        [BindProperty]
+        public Apoteka Apoteka2 { get; set; }
+        public IMongoCollection<Lek> collectionL { get; set; }
+        public IMongoCollection<Apoteka> collectionA { get; set; }
+        [BindProperty]
+        public List<MongoDBRef> lekovii { get; set; }
         public IActionResult OnGet([FromRoute] String id)
         {
             Prosledjeno = id;
@@ -37,25 +41,20 @@ namespace BazeApoteka.Pages
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
+            collectionL = database.GetCollection<Lek>("lekovi");
+            collectionA = database.GetCollection<Apoteka>("apoteke");
+            Apoteka2 = collectionA.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).FirstOrDefault();
+            Lek.MojaApoteka = new MongoDBRef("apoteke", Apoteka2.Id);
+            collectionL.InsertOne(Lek);
 
-            collection = database.GetCollection<Lek>("lekovi");
-
-
-            var apoteke = database.GetCollection<Apoteka>("apoteke");
-            var query1 = from apoteka in apoteke.AsQueryable<Apoteka>()
-                         where apoteka.Id == ObjectId.Parse(Prosledjeno)
-                         select apoteka;
-            ObjectId jj = ObjectId.Parse(Prosledjeno);
-            Lek.MojaApoteka = new MongoDBRef("apoteke", jj);
-            collection.InsertOne(Lek);
-
-            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, jj);
-            var operation = Builders<Apoteka>.Update.Set(u => u.Naziv, "Benu2");
+            lekovii = new List<MongoDBRef>();
+            lekovii = Apoteka2.Lekovi;
+            lekovii.Add(new MongoDBRef("lekovi", Lek.Id));
+            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka2.Id);
+            var operation = Builders<Apoteka>.Update.Set(u => u.Lekovi, lekovii);
             database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
-
-            //fali da se doda referenca kod apoteke na lek
 
             return RedirectToPage();
         }

@@ -16,15 +16,7 @@
     <input type="text" asp-for="@Model.Korisnik.Adresa" />
     <div>Broj zdravstvene knjizice:</div>
     <input type="text" asp-for="@Model.Korisnik.BrojZdravstveneKnjizice" />
-    <div>Izaberi lekara:</div>
-    <!--
-    <select name="lekar" id="lekar" asp-for="@Model.idL">
-        @foreach (BazeApoteka.Entiteti.Lekar l in Model.lekari)
-        {
-            <option value="@l.Id.ToString()" >@l.Ime @l.Prezime </option>
-        }
-    </select>
-    -->
+    <br />
     <div>
         <br />
         <input type="submit" value="Dodaj" asp-page-handler="Dodaj" />

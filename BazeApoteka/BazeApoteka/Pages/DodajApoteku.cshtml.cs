@@ -30,10 +30,8 @@ namespace BazeApoteka.Pages
             collection = database.GetCollection<Apoteka>("apoteke");
            
             collection.InsertOne(Apoteka);
-
-            //model = collection.Find(FilterDefinition<Lek>.Empty).ToList();
-            //collection = database.GetCollection<Lek>("lekovi");
             String jj = Apoteka.Id.ToString();
+
             return RedirectToPage("./DodajApoteku2", new { id = jj} );
         }
     }

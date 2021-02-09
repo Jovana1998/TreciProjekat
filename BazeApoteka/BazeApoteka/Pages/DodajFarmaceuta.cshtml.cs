@@ -21,10 +21,14 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Farmaceut Farmaceut { get; set; }
         [BindProperty]
+        public Apoteka Apoteka { get; set; }
+        [BindProperty]
         public String Prosledjeno { get; set; }
-        
-        public IMongoCollection<Farmaceut> collection { get; set; }
-        
+        [BindProperty]
+        public List<MongoDBRef> farmaceuti { get; set; }
+        public IMongoCollection<Farmaceut> collectionF { get; set; }
+        public IMongoCollection<Apoteka> collectionA { get; set; }
+
         public IActionResult OnGet([FromRoute]String id)
         {
             Prosledjeno = id;
@@ -33,45 +37,28 @@ namespace BazeApoteka.Pages
         public IActionResult OnPost([FromRoute]String id)
         {
             Prosledjeno = id;
-            //IdApoteke = ObjectId.Parse(id);
             return Page();
         }
 
-        public IActionResult OnPostDodaj([FromRoute]String pom)
+        public IActionResult OnPostDodaj()
         {
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Apoteka2");
+            var database = client.GetDatabase("Apoteka3");
 
+            collectionF = database.GetCollection<Farmaceut>("farmaceuti");
+            collectionA = database.GetCollection<Apoteka>("apoteke");
 
-            collection = database.GetCollection<Farmaceut>("farmaceuti");
+            Apoteka = collectionA.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).FirstOrDefault();
+            Farmaceut.MojaApoteka = new MongoDBRef("apoteke", Apoteka.Id);
+            collectionF.InsertOne(Farmaceut);
 
-            
-            var apoteke = database.GetCollection<Apoteka>("apoteke");
-            var query1 = from apoteka in apoteke.AsQueryable<Apoteka>()
-                         where apoteka.Id == ObjectId.Parse(Prosledjeno)
-                         select apoteka;
-            ObjectId jj = ObjectId.Parse(Prosledjeno);
-            Farmaceut.MojaApoteka = new MongoDBRef("apoteke", jj);
-            collection.InsertOne(Farmaceut);
-
-            var query = Query.EQ("Naziv", "apoteka");
-            var update = MongoDB.Driver.Builders.Update.Set("Naziv", BsonValue.Create(new List<String> {"Blabla"}));
-            //apoteke.UpdateOneAsync("apoteke", update);
-
-            //collection.ReplaceOne("farmaceuti",Farmaceut);
-
-            //foreach (Apoteka a in query1)
-            //{
-            //    a.Farmaceuti.Add(new MongoDBRef("farmaceuti", Farmaceut.Id));
-            //    Farmaceut.MojaApoteka = new MongoDBRef("apoteke", ObjectId.Parse(Prosledjeno));
-            //    collection.ReplaceOne("farmaceuti", Farmaceut);
-
-            //}
-            //var update = MongoDB.Driver.Builders.Update.Set("MojaApoteka", BsonValue.Create());
-
-
-
+            farmaceuti = new List<MongoDBRef>();
+            farmaceuti = Apoteka.Farmaceuti;
+            farmaceuti.Add(new MongoDBRef("farmaceuti", Farmaceut.Id));
+            var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka.Id);
+            var operation = Builders<Apoteka>.Update.Set(u => u.Farmaceuti, farmaceuti);
+            database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
 
             return RedirectToPage();
             }
