@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Korisnik\\Documents\\NBP\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj": {}
+    "D:\\NBP\\Mongo\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Korisnik\\Documents\\NBP\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj": {
+    "D:\\NBP\\Mongo\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Korisnik\\Documents\\NBP\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
+        "projectUniqueName": "D:\\NBP\\Mongo\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
         "projectName": "BazeApoteka",
-        "projectPath": "C:\\Users\\Korisnik\\Documents\\NBP\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
-        "packagesPath": "C:\\Users\\Korisnik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Korisnik\\Documents\\NBP\\TreciProjekat\\BazeApoteka\\BazeApoteka\\obj\\",
+        "projectPath": "D:\\NBP\\Mongo\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
+        "packagesPath": "C:\\Users\\arsic\\.nuget\\packages\\",
+        "outputPath": "D:\\NBP\\Mongo\\TreciProjekat\\BazeApoteka\\BazeApoteka\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Korisnik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arsic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
