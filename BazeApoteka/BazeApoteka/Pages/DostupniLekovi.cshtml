@@ -2,14 +2,22 @@
 @model BazeApoteka.Pages.DostupniLekoviModel
 @{
 }
-<form method="post">
-    <div>
-        Ovde se proledjuje id farmaceuta, on treba da ima referencu na apoteku, a apoteka treba da ima
-        reference na lekove koji se nalaze u njoj, dok ne resimo dodavanje referenci ovo ne moze dalje.
-        Mislim mozemo samo da ucitamo sve lekove iz svih apoteka.
-        Ovde pored svakog leka treba da imamo dugme da se obrise lek ili da se izmeni.
-    </div>
-    <br />
-    <div>__________________________</div>
-    <input type="submit" value="Nazad" asp-page="./Farmaceut" />
-</form>
+    <form method="post">
+      
+        <h2>Ovo su lekovi koji su dostupni u  nasoj apoteci </h2>
+        @foreach (BazeApoteka.Entiteti.Lek l in Model.LekoviApoteke)
+        {
+            <div>
+                @l.Id
+                @l.GenerickiNaziv
+                @l.KomercijaniNaziv
+                @l.Doza
+                @l.Cena
+            </div>
+            <input type="submit" value="Obrisi" asp-page-handler="Obrisi" asp-route-id="@l.Id" />
+            <input type="submit" value="Izmeni" asp-page="./IzmeniLek" /> <label>ovde sam napravila da ide na stranicu izmeni lek ali bi bilo bolje da napravimo da se prosledi id leka sledecoj stranici da nebi unosio id sam </label>
+        }
+        <br />
+        <div>__________________________</div>
+        <input type="submit" value="Nazad" asp-page="./Farmaceut" />
+    </form>
