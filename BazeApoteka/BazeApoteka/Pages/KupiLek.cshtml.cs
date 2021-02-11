@@ -37,7 +37,7 @@ namespace BazeApoteka.Pages
 
             return Page();
         }
-        public IActionResult OnPost(String? idK, String? idL)
+        public IActionResult OnPost(String idK, String idL)
         {
             Lek.Id = ObjectId.Parse(idL);
             Korisnik.BrojZdravstveneKnjizice = float.Parse(idK);

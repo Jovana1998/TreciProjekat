@@ -12,20 +12,15 @@
         {
             @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
             {
-                <div>
-                    @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
-                    <div>@l.Dejstvo</div>
-                    <br />
-                    Unesite broj knjizice 
-                    <input type="text" asp-for="@Model.Korisnik" />
-                    <a asp-page="../KupiLek"  asp-route-idK="@Model.Korisnik" asp-route-idL="@l.Id.ToString()">Kupi lek</a>
-                    <div>Ni sa submit ni sa link nece da se prosledi br knjizice. Pogledaj sutra kad budes odmorna. 
-                    Sa linkom se samo poziva funkcija get ove iste stranice, ne znam zasto, a sa submit one na stranicu KupiLek 
-                    Ali prijavljuje nece greske, vise i ne znam koje sve. Kad stavim za Korisnika da bude ti Korisnik
-                    nece ni da se ucita stranica, prijavljuje onaj izuzetak za null referencu, sa String se ucita, ali
-                    se ne prosledjuje.
-                   </div>
-                </div>
+    <div>
+        @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
+        <div>@l.Dejstvo</div>
+        <br />
+        <label>Unesite broj knjizice</label>
+        <input type="text" asp-for="@Model.Korisnik" />
+        <input type="submit" asp-page-handler="KupiLek"  value="Kupi lek " asp-route-idL="@l.Id.ToString()" />
+        
+    </div>
                 <br />
                 <br />
                 <div>_____________________________________________________</div>
