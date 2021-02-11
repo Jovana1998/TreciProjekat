@@ -62,7 +62,7 @@ namespace BazeApoteka.Pages
 
 
             //treba da mu prosledim i id korisnika i id leka 
-            return RedirectToPage("./KupiLek");
+            return RedirectToPage("./KupiLek", new { id=idL});
         }
     }
 }

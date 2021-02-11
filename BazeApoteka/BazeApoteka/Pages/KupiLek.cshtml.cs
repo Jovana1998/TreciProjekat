@@ -37,10 +37,10 @@ namespace BazeApoteka.Pages
 
             return Page();
         }
-        public IActionResult OnPost(String idK, String idL)
+        public IActionResult OnPost([FromRoute]String id)
         {
-            Lek.Id = ObjectId.Parse(idL);
-            Korisnik.BrojZdravstveneKnjizice = float.Parse(idK);
+            Lek.Id = ObjectId.Parse(id);
+            Korisnik.BrojZdravstveneKnjizice = float.Parse(id);
 
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
