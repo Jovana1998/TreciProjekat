@@ -17,9 +17,9 @@ namespace BazeApoteka.Entiteti
         ////delovi recepta 
         //public String Inscriptio { get; set; } //naziv i adresa ustanove u kojoj je lek propisan
         //public Korisnik NomenAegroti { get; set; } //podaci o pacijentu 
-        //public String Ordinatio { get; set; } //koji lek se propisuje
-        //public String Subscriptio { get; set; } //uputstvo farmaceutu, oblik, kolicina 
-        //public String Signatura { get; set; } //uputstvo za pacijenta
+        public String Ordinatio { get; set; } //koji lek se propisuje
+        public String Subscriptio { get; set; } //uputstvo farmaceutu, oblik, kolicina 
+        public String Signatura { get; set; } //uputstvo za pacijenta
         //public String NomenMedici { get; set; } //ime lekara
     }
 }

@@ -639,3 +639,4 @@ C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj
 C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\BazeApoteka.pdb
 C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\BazeApoteka.genruntimeconfig.cache
 C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\PrepisiRecept.cshtml.g.cs
+C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\UspesnoReceptLekar.cshtml.g.cs

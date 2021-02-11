@@ -5,10 +5,12 @@
 }
 
     <form method="post">
-        <div> Pacijent: @Model.recept.Id</div>
-        
-        <div> Terapija: </div>
-        <div>Naziv leka: </div> @*ovde input da se cuva kao neki string*@
-        <div></div>
-        <input type="submit" value="Dodaj Lek" asp-page-handler="DodajLek" />
+        <div> Inscriptio: @Model.lekar.UstanovaGdeRadi</div>
+        <div> NomenAegroti: @Model.pacijent.Ime @Model.pacijent.Prezime @Model.pacijent.BrojZdravstveneKnjizice @Model.pacijent.Adresa</div>
+        <div> Ordinatio:  </div> <input type="text" asp-for="@Model.recept.Ordinatio" />
+        <div> Subscriptio</div> <input type="text" asp-for="@Model.recept.Subscriptio" />
+        <div> Signatura</div> <input type="text" asp-for="@Model.recept.Signatura" />
+        <div>Nomen medici: @Model.lekar.Ime @Model.lekar.Prezime </div>
+        <input type="submit" value="Sacuvaj recept" asp-page-handler="Dodaj" asp-route-id="@Model.recept.Id.ToString()"/>
+        <input type="submit" value="Nazad" asp-page="./PrikaziLekara" />
     </form>
