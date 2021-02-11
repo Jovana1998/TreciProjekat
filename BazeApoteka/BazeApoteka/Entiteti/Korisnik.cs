@@ -13,7 +13,7 @@ namespace BazeApoteka.Entiteti
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Adresa { get; set; }
-        public float BrojZdravstveneKnjizice { get; set; }
+        public double BrojZdravstveneKnjizice { get; set; }
         public MongoDBRef Doktor { get; set; }
         public List<MongoDBRef> Recepti { get; set; }
 

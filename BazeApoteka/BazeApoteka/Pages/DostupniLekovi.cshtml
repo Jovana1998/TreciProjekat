@@ -3,7 +3,7 @@
 @{
 }
     <form method="post">
-      
+
         <h2>Ovo su lekovi koji su dostupni u  nasoj apoteci </h2>
         @foreach (BazeApoteka.Entiteti.Lek l in Model.LekoviApoteke)
         {
@@ -15,9 +15,10 @@
                 @l.Cena
             </div>
             <input type="submit" value="Obrisi" asp-page-handler="Obrisi" asp-route-id="@l.Id" />
-            <input type="submit" value="Izmeni" asp-page="./IzmeniLek" /> <label>ovde sam napravila da ide na stranicu izmeni lek ali bi bilo bolje da napravimo da se prosledi id leka sledecoj stranici da nebi unosio id sam </label>
+            <input type="submit" value="Izmeni" asp-page-handler="IZ" asp-page="./IzmeniLek" asp-route-id="@l.Id" /> 
         }
         <br />
         <div>__________________________</div>
+        <a href="C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\Pages\DostupniLekovi.cshtml">C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\Pages\DostupniLekovi.cshtml</a>
         <input type="submit" value="Nazad" asp-page="./Farmaceut" />
     </form>

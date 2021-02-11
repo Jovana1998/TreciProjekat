@@ -14,6 +14,7 @@ namespace BazeApoteka.Entiteti
         public MongoDBRef Lekar { get; set; }
         public MongoDBRef Faramceut { get; set; }
         public MongoDBRef Lek { get; set; }
+        public bool Obradjeno { get; set; }
         ////delovi recepta 
         //public String Inscriptio { get; set; } //naziv i adresa ustanove u kojoj je lek propisan
         //public Korisnik NomenAegroti { get; set; } //podaci o pacijentu 

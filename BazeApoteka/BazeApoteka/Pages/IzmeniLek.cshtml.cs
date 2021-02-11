@@ -23,10 +23,20 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Lek Lek2 { get; set; }
         public IMongoCollection<Lek> collection { get; set; }
+
         public void OnGet()
         {
         }
-
+        public IActionResult OnPostIZ(String id)
+        {
+            var connectionString = "mongodb://localhost/?safe=true";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Apoteka3");
+        
+            collection = database.GetCollection<Lek>("lekovi");
+            IdL = id;
+            return Page();
+        }
         public IActionResult OnPostIzmena()
         {
             var connectionString = "mongodb://localhost/?safe=true";
