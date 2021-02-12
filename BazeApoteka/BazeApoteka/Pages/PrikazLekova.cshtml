@@ -27,9 +27,7 @@
         </div>
         <div><a asp-page="./LekOpsirno" asp-route-id="@l.Id.ToString()">Procitaj vise o ovom leku...</a></div>
         <br />
-        <label>Unesite broj knjizice</label>
-        <input type="text" asp-for="@Model.Korisnik" />
-        <input type="submit" asp-page-handler="KupiLek"  value="Kupi lek " asp-route-idL="@l.Id.ToString()" />
+        <input type="submit" asp-page-handler="KupiLek"  value="Kupi lek " asp-route-id="@l.Id.ToString()" />
         
     </div>
                 <br />
