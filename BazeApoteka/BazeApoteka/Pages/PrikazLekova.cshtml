@@ -13,8 +13,19 @@
             @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
             {
     <div>
-        @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
-        <div>@l.Dejstvo</div>
+        @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg 
+        <div class="font-weight-bold"> @l.Cena rsd </div>
+        <div>
+            @if (l.DaLiJeNaRecept == "da")
+            {
+                <div class="font-italic">Za kupovinu ovoh leka je potreban recept.</div>
+            }
+            @if (l.DaLiJeNaRecept == "ne")
+            {
+                <div class="font-italic">Ovaj lek se moze kupiti bez recepta.</div>
+            }
+        </div>
+        <div><a asp-page="./LekOpsirno" asp-route-id="@l.Id.ToString()">Procitaj vise o ovom leku...</a></div>
         <br />
         <label>Unesite broj knjizice</label>
         <input type="text" asp-for="@Model.Korisnik" />
