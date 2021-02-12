@@ -7,18 +7,28 @@
         <h2>Ovo su lekovi koji su dostupni u  nasoj apoteci </h2>
         @foreach (BazeApoteka.Entiteti.Lek l in Model.LekoviApoteke)
         {
-            <div>
-                @l.Id
-                @l.GenerickiNaziv
-                @l.KomercijaniNaziv
-                @l.Doza
-                @l.Cena
-            </div>
+    <div>
+
+        <div class="font-weight-bold"> @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg </div>
+        <br />
+        <div class="font-weight-bold">Cena leka je @l.Cena rsd.</div>
+        <div>Trenutna kolicina: @l.Kolicina </div>
+        <br />
+        <div>@l.Dejstvo</div>
+        <br />
+        <div class="font-weight-bold">Indikacije</div>
+        <div>@l.Indikacije</div>
+        <br />
+        <div class="font-weight-bold">Kontraindikacije</div>
+        <div>@l.Kontraindikacije</div>
+        <br />
+        <br />
+    </div>
             <input type="submit" value="Obrisi" asp-page-handler="Obrisi" asp-route-id="@l.Id" />
             <input type="submit" value="Izmeni" asp-page-handler="IZ" asp-page="./IzmeniLek" asp-route-id="@l.Id" /> 
         }
         <br />
         <div>__________________________</div>
-        <a href="C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\Pages\DostupniLekovi.cshtml">C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\Pages\DostupniLekovi.cshtml</a>
+        
         <input type="submit" value="Nazad" asp-page="./Farmaceut" />
     </form>

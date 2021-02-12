@@ -12,24 +12,24 @@
         {
             @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
             {
-    <div>
+                <div>
 
-        <div class="font-weight-bold"> @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg </div>
-        <br />
-        <div class="font-weight-bold">Cena leka je @l.Cena rsd.</div>
-        <br />
-        <div>@l.Dejstvo</div>
-        <br />
-        <div class="font-weight-bold">Indikacije</div>
-        <div>@l.Indikacije</div>
-        <br />
-        <div class="font-weight-bold">Kontraindikacije</div>
-        <div>@l.Kontraindikacije</div>
-    </div>
-                <br />
-                <br />
-                <div>_____________________________________________________</div>
-                <br />
+                    <div class="font-weight-bold"> @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg </div>
+                    <br />
+                    <div class="font-weight-bold">Cena leka je @l.Cena rsd.</div>
+                    <br />
+                    <div>@l.Dejstvo</div>
+                    <br />
+                    <div class="font-weight-bold">Indikacije</div>
+                    <div>@l.Indikacije</div>
+                    <br />
+                    <div class="font-weight-bold">Kontraindikacije</div>
+                    <div>@l.Kontraindikacije</div>
+                </div>
+                            <br />
+                            <br />
+                            <div>_____________________________________________________</div>
+                            <br />
             }
         }
         @if (Model.lekovi == null)
