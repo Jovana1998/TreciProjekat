@@ -55,14 +55,14 @@ namespace BazeApoteka.Pages
 
         public IActionResult OnPostKupiLek(String idL)
         {
-            String id = idL;
+            String iid = idL;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
 
 
             //treba da mu prosledim i id korisnika i id leka 
-            return RedirectToPage("./KupiLek", new { id=idL});
+            return RedirectToPage("./KupiLek2", new { id=iid});
         }
     }
 }
