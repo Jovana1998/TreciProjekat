@@ -19,6 +19,6 @@ namespace BazeApoteka.Entiteti
         public string DaLiJeNaRecept { get; set; }
         public string Kolicina { get; set; }
         public string Doza { get; set; }
-        public MongoDBRef MojaApoteka { get; set; }
+        public Apoteka MojaApoteka { get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace BazeApoteka.Pages
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionA = database.GetCollection<Apoteka>("apoteke");
             Apoteka2 = collectionA.Find(x => x.RegistarskiBroj == Apoteka.RegistarskiBroj).FirstOrDefault();
-            Lek.MojaApoteka = new MongoDBRef("apoteke",Apoteka2.Id);
+            Lek.MojaApoteka = Apoteka2;
             collectionL.InsertOne(Lek);
 
             Lek2 = collectionL.Find(x => x.KomercijaniNaziv == Lek.KomercijaniNaziv).FirstOrDefault();
