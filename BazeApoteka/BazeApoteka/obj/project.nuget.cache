@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+t+wP471xNYU0uSfuUOzB/NZfv10J9W2Tl/fuDf4elwH9ZMvGhMWdT3VV0vB028Cha+Xox5d0HVZgKLcc8sjQQ==",
+  "dgSpecHash": "kgyv9kgoKqU1+yx1Hp7HcLRK4izgJsZYE8BBovH/ogTLGjMhA44ZC0R0PIZoLe0AsssynDUuOMKrhzpy6nNozA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jovana\\Desktop\\GIT\\Baze-Treci\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
+  "projectFilePath": "C:\\Users\\Jovana\\Desktop\\New folder\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jovana\\.nuget\\packages\\dnsclient\\1.3.1\\dnsclient.1.3.1.nupkg.sha512",
     "C:\\Users\\Jovana\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

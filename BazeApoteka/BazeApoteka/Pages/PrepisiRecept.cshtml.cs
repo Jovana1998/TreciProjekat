@@ -75,7 +75,8 @@ namespace BazeApoteka.Pages
             //ucitamo recepte i nadjemo prosledjen 
             collection = database.GetCollection<Recept>("recepti");
            ObjectId iid = ObjectId.Parse(Prosledjeno);
-           // recept = collection.Find(x => x.Id == iid).FirstOrDefault();
+          
+            // recept = collection.Find(x => x.Id == iid).FirstOrDefault();
 
             var res = Builders<Recept>.Filter.Eq(pd => pd.Id, iid);
             var operation = Builders<Recept>.Update.Set(u => u.Ordinatio, recept.Ordinatio);
@@ -84,7 +85,19 @@ namespace BazeApoteka.Pages
            collection.UpdateOne(res, operation);
            collection.UpdateOne(res, operation1);
            collection.UpdateOne(res, operation2);
-            return RedirectToPage("./UspesnoReceptLekar", new { id = iid });
+
+            //treba i korisniku da dodamo recept
+            recept = collection.Find(x => x.Id == iid).FirstOrDefault();
+            Korisnici = database.GetCollection<Korisnik>("korisnici");
+            pacijent = Korisnici.Find(x => x.Id == recept.Pacijent.Id).FirstOrDefault();
+
+            pacijent.Recepti.Add(recept);
+            var resK = Builders<Korisnik>.Filter.Eq(pd => pd.Id, pacijent.Id);
+            
+            var operationK = Builders<Korisnik>.Update.Set(u => u.Recepti, pacijent.Recepti);
+            database.GetCollection<Korisnik>("korisnici").UpdateOne(resK, operationK);
+
+                return RedirectToPage("./UspesnoReceptLekar", new { id = iid });
         }
     }
 }

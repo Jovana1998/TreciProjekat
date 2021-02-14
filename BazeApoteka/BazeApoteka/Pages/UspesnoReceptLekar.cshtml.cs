@@ -32,5 +32,26 @@ namespace BazeApoteka.Pages
 
             return Page();
         }
+        public IActionResult OnPostJosJedan([FromRoute] String id)
+        {
+            Prosledjeno = id; //id recepta
+            var connectionString = "mongodb://localhost/?safe=true";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Apoteka3");
+
+            //ucitamo recepte i nadjemo prosledjen 
+            collection = database.GetCollection<Recept>("recepti");
+            ObjectId iid = ObjectId.Parse(Prosledjeno);
+            recept = collection.Find(x => x.Id == iid).FirstOrDefault();
+
+
+            Recept novi = new Recept();
+            novi.Lekar = recept.Lekar;
+            novi.Pacijent = recept.Pacijent;
+            collection.InsertOne(novi);
+
+
+            return RedirectToPage("./PrepisiRecept", new { id= novi.Id});
+        }
     }
 }

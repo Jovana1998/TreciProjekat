@@ -6368,11 +6368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jovana\\Desktop\\GIT\\Baze-Treci\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
+      "projectUniqueName": "C:\\Users\\Jovana\\Desktop\\New folder\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
       "projectName": "BazeApoteka",
-      "projectPath": "C:\\Users\\Jovana\\Desktop\\GIT\\Baze-Treci\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
+      "projectPath": "C:\\Users\\Jovana\\Desktop\\New folder\\TreciProjekat\\BazeApoteka\\BazeApoteka\\BazeApoteka.csproj",
       "packagesPath": "C:\\Users\\Jovana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jovana\\Desktop\\GIT\\Baze-Treci\\TreciProjekat\\BazeApoteka\\BazeApoteka\\obj\\",
+      "outputPath": "C:\\Users\\Jovana\\Desktop\\New folder\\TreciProjekat\\BazeApoteka\\BazeApoteka\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jovana\\AppData\\Roaming\\NuGet\\NuGet.Config",
