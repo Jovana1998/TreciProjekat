@@ -22,10 +22,12 @@ namespace BazeApoteka.Pages
         public Lek Lek2 { get; set; }
         public IMongoCollection<Korisnik> collectionK { get; set; }
         [BindProperty]
-        public List<Korisnik> korisnici { get; set; }
+        public Korisnik korisnik { get; set; }
         public IMongoCollection<Lek> collectionL { get; set; }
         [BindProperty]
-        public List<Lek> lekovi { get; set; }
+        public Lek lek { get; set; }
+        [BindProperty]
+        public String PorukaKorisniku { get; set; }
         public IActionResult OnGet([FromRoute] String id)
         {
             Prosledjeno = id;
@@ -36,7 +38,7 @@ namespace BazeApoteka.Pages
             collectionL = database.GetCollection<Lek>("lekovi");
             // collectionK = database.GetCollection<Korisnik>("korisnici");
 
-            lekovi = collectionL.Find(x => x.Id == ObjectId.Parse(id)).ToList();
+            lek = collectionL.Find(x => x.Id == ObjectId.Parse(id)).FirstOrDefault();
             // korisnici = collectionK.Find(x => x.Id == Korisnik.Id).ToList();
 
             return Page();
@@ -45,25 +47,25 @@ namespace BazeApoteka.Pages
         {
             //Lek.Id = ObjectId.Parse(id);
             //Korisnik.BrojZdravstveneKnjizice = float.Parse(id);
-
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
 
             collectionL = database.GetCollection<Lek>("lekovi");
             //collectionK = database.GetCollection<Korisnik>("korisnici");
-
-            lekovi = collectionL.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).ToList();
+            ObjectId LekId = ObjectId.Parse(id);
+            lek = collectionL.Find(x => x.Id == LekId).FirstOrDefault();
             //korisnici = collectionK.Find(x => x.BrojZdravstveneKnjizice == Korisnik.BrojZdravstveneKnjizice).ToList();
 
             return Page();
         }
 
-        public IActionResult OnPostKupi()
+        public IActionResult OnPostKupi(String id)
         {
 
             //Korisnik.BrojZdravstveneKnjizice = float.Parse(id);
-
+            Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
@@ -71,14 +73,32 @@ namespace BazeApoteka.Pages
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionK = database.GetCollection<Korisnik>("korisnici");
 
-            lekovi = collectionL.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).ToList();
-            korisnici = collectionK.Find(x => x.BrojZdravstveneKnjizice == Korisnik.BrojZdravstveneKnjizice).ToList();
+            lek = collectionL.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).FirstOrDefault();
+            korisnik = collectionK.Find(x => x.BrojZdravstveneKnjizice == Korisnik.BrojZdravstveneKnjizice).FirstOrDefault();
 
-            Lek lek = lekovi.FirstOrDefault();
+            
 
             if (lek.DaLiJeNaRecept == "da")
             {
                 //ako je na recept proveri da li postoji recept kod korisnika
+                if(korisnik.Recepti.Count!=0)
+                {
+                    foreach(Recept r in korisnik.Recepti)
+                    {
+                        if(r.Ordinatio==lek.GenerickiNaziv)
+                        {
+                            PorukaKorisniku = "Ovo je lek koji se izdaje na recept, Vi imate recept za njega ali je neophodno da ga preuzmete u apoteci";
+                        }
+                    }
+                    if (PorukaKorisniku==null)
+                    {
+                        PorukaKorisniku = "Nemate recept za ovaj lek";
+                    }
+                }
+                else
+                {
+                    PorukaKorisniku = "Nemate recept za ovaj lek";
+                }
             }
             else
             {
@@ -90,6 +110,7 @@ namespace BazeApoteka.Pages
                     var operation = Builders<Lek>.Update.Set(u => u.Kolicina, lek.Kolicina);
                     database.GetCollection<Lek>("lekovi").UpdateOne(res, operation);
                 }
+                PorukaKorisniku = "Uspesno ste kupili lek, bice poslat na Vasu adresu!";
             }
 
             return Page();

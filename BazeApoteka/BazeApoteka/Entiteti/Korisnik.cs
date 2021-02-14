@@ -15,11 +15,11 @@ namespace BazeApoteka.Entiteti
         public string Adresa { get; set; }
         public double BrojZdravstveneKnjizice { get; set; }
         public MongoDBRef Doktor { get; set; }
-        public List<MongoDBRef> Recepti { get; set; }
+        public List<Recept> Recepti { get; set; }
 
         public Korisnik()
         {
-            Recepti = new List<MongoDBRef>();
+            Recepti = new List<Recept>();
         }
     }
 }

@@ -55,7 +55,7 @@ namespace BazeApoteka.Pages
 
         public IActionResult OnPostKupiLek(String idL)
         {
-            String iid = idL;
+            String iid = idL; //id leka
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");

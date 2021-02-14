@@ -6,7 +6,34 @@
     <h1>Korisnik</h1>
 </div>
 <form method="post">
-    <a asp-page="./PrikaziSveApoteke" class="font-weight-bold font-italic "> * Prikazi sve aporete</a>
+    <a asp-page="./PrikaziSveApoteke" class="font-weight-bold font-italic "> * Prikazi sve apoteke</a>
+    <br />
+    <label> Pretraga leka po komercijalnom nazivu </label>
+    <input type="text" asp-for="@Model.Komercijani" />
+    <input type="submit" asp-page-handler="Komercijalni" value="Pretrazi" />
+    <label> Pretraga leka po generickom nazivu </label>
+    <input type="text" asp-for="@Model.Genericki" />
+    <input type="submit" asp-page-handler="Genericki" value="Pretrazi" />
+    @if (Model.Nadjeno)
+    {
+        @foreach (BazeApoteka.Entiteti.Lek L in Model.LekoviZaPrikaz)
+        {
+            <div>Genericki naziv: @L.GenerickiNaziv</div>
+            <div>Komercijalni naziv: @L.KomercijaniNaziv</div>
+            <div>Id apoteke ali hocu da prepravimo da se cuva kao obejkat a ne referenca: @L.MojaApoteka.Id</div>
+            <div>Cena leka: @L.Cena</div>
+            <div>Da li je na recept:@L.DaLiJeNaRecept</div>
+            <div>Kolicina leka u apoteci: @L.Kolicina</div>
+            <div>Doza: @L.Doza</div>
+            <div>Indikacije: @L.Indikacije</div>
+            <div>KontraIndikacije: @L.Kontraindikacije</div>
+            <div>Dejstvo: @L.Dejstvo</div>
+            <input type="submit" value="Kupi ovaj lek" asp-page="./KupiLek2" asp-route-id="@L.Id.ToString()"/>
+            <br />
+            <br />
+            <br />
+        }
+    }
     <div>
         <br />
         <br />

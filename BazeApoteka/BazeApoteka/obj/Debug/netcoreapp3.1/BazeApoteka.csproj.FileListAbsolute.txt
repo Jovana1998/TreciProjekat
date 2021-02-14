@@ -653,3 +653,5 @@ C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\UspesnoReceptLekar.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\LekOpsirno.cshtml.g.cs
 C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\KupiLek2.cshtml.g.cs
+C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\KupiLek2.cshtml.g.cs
+C:\Users\Jovana\Desktop\GIT\Baze-Treci\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\LekOpsirno.cshtml.g.cs
