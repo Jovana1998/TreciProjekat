@@ -8,17 +8,26 @@
     </div>
     <br />
     <br />
+    @foreach (BazeApoteka.Entiteti.Apoteka a in Model.apoteke2)
+    {
+        <div>Naziv apoteke u kojoj se nalazi lek je:</div>
+        <div>@a.Naziv</div>
+    }
+    <br />
     @foreach (BazeApoteka.Entiteti.Lek l in Model.lekovi)
     {
+
         <div>
-                @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
-                <div>@l.Dejstvo</div>
-                <div>@l.MojaApoteka.Id  ovo je id apoteke, treba da nadjemo ime</div>
+            @l.GenerickiNaziv (@l.KomercijaniNaziv) @l.Doza mg @l.Cena rsd
+            <div>@l.Dejstvo</div><br />
+
         </div>
         <br />
         <div>_____________________________________________</div>
         <br />
     }
+
+
     <div>
         <input type="submit" value="Nazad" asp-page="./Admin" />
     </div>
