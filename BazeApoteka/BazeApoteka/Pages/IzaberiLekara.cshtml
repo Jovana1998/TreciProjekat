@@ -4,7 +4,8 @@
 }
 <form method="post">
     <input type="hidden" id="id" asp-for="@Model.Prosledjeno" />
-        <div>
+    @if (!Model.ok)
+    {         <div>
             <h2>Lista lekara</h2>
         </div>
         <br />
@@ -20,6 +21,11 @@
             <div>____________________________________________</div>
             <br />
         }
+    }
+    else
+    {
+        <div>Uspesno ste dodali korisnika @Model.Korisnik.Ime, @Model.Korisnik.Prezime</div>
+    }
         <div>
             <input type="submit" value="Nazad" asp-page="./Admin" />
         </div>

@@ -28,8 +28,11 @@ namespace BazeApoteka.Pages
         public Korisnik Korisnik { get; set; }
         [BindProperty]
         public Lekar Lekar { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public IActionResult OnGet([FromRoute] String id)
         {
+            ok = false;
             Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
@@ -43,6 +46,7 @@ namespace BazeApoteka.Pages
         }
         public IActionResult OnPost([FromRoute] String id)
         {
+            ok = false;
             Prosledjeno = id;
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
@@ -78,7 +82,7 @@ namespace BazeApoteka.Pages
             var res1 = Builders<Lekar>.Filter.Eq(pd => pd.Id, Lekar.Id);
             var operation1 = Builders<Lekar>.Update.Set(u => u.Pacijenti, pacijenti);
             database.GetCollection<Lekar>("lekari").UpdateOne(res1, operation1);
-
+            ok = true;
             return Page();
         }
        

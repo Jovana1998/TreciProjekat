@@ -23,6 +23,8 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Lek Lek2 { get; set; }
         public IMongoCollection<Lek> collection { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
 
         public void OnGet()
         {
@@ -91,6 +93,7 @@ namespace BazeApoteka.Pages
                     database.GetCollection<Lek>("lekovi").UpdateOne(res, operation);
                 }
             }
+            ok = true;
             return RedirectToPage();
         }
     }

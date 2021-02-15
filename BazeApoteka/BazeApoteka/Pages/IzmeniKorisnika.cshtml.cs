@@ -21,6 +21,8 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Korisnik Korisnik2 { get; set; }
         public IMongoCollection<Korisnik> collection { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public void OnGet()
         {
         }
@@ -59,7 +61,9 @@ namespace BazeApoteka.Pages
                     database.GetCollection<Korisnik>("korisnici").UpdateOne(res, operation);
                 }
             }
-            return RedirectToPage();
+            Korisnik2 = collection.Find(x => x.BrojZdravstveneKnjizice == Korisnik.BrojZdravstveneKnjizice).FirstOrDefault();
+            ok = true;
+            return Page();
         }
     }
 }
