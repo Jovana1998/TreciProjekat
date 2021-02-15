@@ -5,7 +5,12 @@
 }
 <form method="post">
     <div>
-
+        @foreach(BazeApoteka.Entiteti.Recept r in Model.recepti)
+        {
+            <div>
+                Id: @r.Id
+            </div>
+        }
     </div>
     <div>
         <div>___________________________________________</div>

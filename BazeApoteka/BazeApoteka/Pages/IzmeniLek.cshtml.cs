@@ -94,7 +94,7 @@ namespace BazeApoteka.Pages
                 }
             }
             ok = true;
-            return RedirectToPage();
+            return Page();
         }
     }
 }

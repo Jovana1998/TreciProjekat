@@ -54,7 +54,7 @@ namespace BazeApoteka.Pages
             //{
                 Pacijent =collectionK.Find(x => x.BrojZdravstveneKnjizice== Pacijent.BrojZdravstveneKnjizice).FirstOrDefault();
            // }
-            recepti = database.GetCollection<Recept>("recepti").Find(x => x.Pacijent.Id == Pacijent.Id).ToList();
+            recepti = database.GetCollection<Recept>("recepti").Find(x => x.Pacijent.Id == Pacijent.Id && x.Obradjeno == false).ToList();
             ok = true;
             return Page();
         }
@@ -71,7 +71,7 @@ namespace BazeApoteka.Pages
             collection = database.GetCollection<Farmaceut>("farmaceuti");
             Farmaceut f = collection.Find(x => x.Id == idFarmaceuta).FirstOrDefault();
 
-            ReceptZaObradu = database.GetCollection<Recept>("recepti").Find(x => x.Id == iid).FirstOrDefault();
+            ReceptZaObradu = database.GetCollection<Recept>("recepti").Find(x => x.Id == iid && x.Obradjeno== false).FirstOrDefault();
             LekoviApoteke = database.GetCollection<Lek>("lekovi").Find(x => x.MojaApoteka.Id == f.MojaApoteka.Id).ToList(); //treba i ovo dole da se stavi u uslov samo sam sklonila da ne menjam bazu nego ovako prikazuje sve iz jedne apoteke 
             //&& x.GenerickiNaziv==ReceptZaObradu.Ordinatio
 
@@ -97,10 +97,12 @@ namespace BazeApoteka.Pages
             Lek lek = database.GetCollection<Lek>("lekovi").Find(x => x.Id == iid).FirstOrDefault();
 
             var res = Builders<Recept>.Filter.Eq(pd => pd.Id, r.Id);//nadjem recept
-            var operation = Builders<Recept>.Update.Set(u => u.Lek, new MongoDBRef("recepti", lek.Id));//dodelim id leka  i update da li je dobro??????????/
+            var operation = Builders<Recept>.Update.Set(u => u.Lek, new MongoDBRef("recepti", lek.Id));
             database.GetCollection<Recept>("recepti").UpdateOne(res, operation);
 
-
+            var res1 = Builders<Recept>.Filter.Eq(pd => pd.Id, r.Id); //pamtim da je obradjen recept
+            var operation1 = Builders<Recept>.Update.Set(u => u.Obradjeno, true);
+            database.GetCollection<Recept>("recepti").UpdateOne(res1, operation1);
             LekoviApoteke = new List<Lek>();
             ok = true;
             return Page();
