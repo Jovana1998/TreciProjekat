@@ -841,3 +841,4 @@ D:\NBP\Mongo\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor
 D:\NBP\Mongo\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\ObradjeniRecepti.cshtml.g.cs
 D:\NBP\Mongo\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\PrepisiRecept.cshtml.g.cs
 D:\NBP\Mongo\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\UspesnoReceptLekar.cshtml.g.cs
+C:\Users\Korisnik\Documents\NBP\TreciProjekat\BazeApoteka\BazeApoteka\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LayoutPocetna.cshtml.g.cs
