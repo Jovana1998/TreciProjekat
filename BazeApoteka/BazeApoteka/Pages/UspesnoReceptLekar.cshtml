@@ -5,8 +5,10 @@
 }
 
     <form method="post">
-        <h1>Uspesno ste dodali recept @Model.recept.Id</h1>
-        <input type="submit" value="Nazad" asp-page="./PrikazLekara" />
-        <input type="submit" value="Dodaj jos jedan recept ovo pacijentu" asp-page-handler="JosJedan" asp-route-id="@Model.recept.Id.ToString()" />
+        <br />
+        <h4>Uspesno ste dodali recept!</h4>
+        <br />
+        <input type="submit" value="Nazad" asp-page="./Lekar" />
+        <input type="submit" value="Dodaj jos jedan recept ovom pacijentu" asp-page-handler="JosJedan" asp-route-id="@Model.recept.Id.ToString()" />
     </form>
 

@@ -55,7 +55,7 @@ namespace BazeApoteka.Pages
 
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionL.DeleteOne(x => x.Id == iid);
-            return Page();
+            return RedirectToPage();
         }
      
     }

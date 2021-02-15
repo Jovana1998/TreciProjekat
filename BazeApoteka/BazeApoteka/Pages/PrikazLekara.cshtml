@@ -21,8 +21,9 @@
         {
             <div>
                 @k.Ime @k.Prezime
+
+                <input type="submit" value="Prepisi recept" asp-page-handler="PrepisiRecept" asp-route-pom="@k.Id.ToString()" asp-route-pom2="@Model.lekar.Id.ToString()" />
             </div>
-            <input type="submit" value="Prepisi recept" asp-page-handler="PrepisiRecept" asp-route-pom="@k.Id.ToString()" asp-route-pom2="@Model.lekar.Id.ToString()"/>
         }
     </div>
     <br />
