@@ -23,6 +23,8 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Lekar Lekar2 { get; set; }
         public IMongoCollection<Lekar> collection { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public void OnGet()
         {
         }
@@ -56,7 +58,9 @@ namespace BazeApoteka.Pages
                     database.GetCollection<Lekar>("lekari").UpdateOne(res, operation);
                 }
             }
-            return RedirectToPage();
+            Lekar2 = collection.Find(x => x.Id == ObjectId.Parse(IdL)).FirstOrDefault();
+            ok = true;
+            return Page();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace BazeApoteka.Pages
         }
         public IActionResult OnPostObrisi()
         {
-            if (ProsledjenoIme == null || ProsledjenoPrezime == null)
+            if (ProsledjenoIme == null )
             {
                 return RedirectToPage("./ObrisiLekar");
             }
@@ -56,13 +56,13 @@ namespace BazeApoteka.Pages
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Lekar>("lekari");
-            lekari = collection.Find(x => x.Ime == ProsledjenoIme && x.Prezime == ProsledjenoPrezime).ToList();
-            foreach (Lekar lekar in lekari)
-            {
-                String idobrisi = lekar.Id.ToString();
-                ObjectId objectId = ObjectId.Parse(idobrisi);
-                collection.DeleteOne(x => x.Id == objectId);
-            }
+
+            ObjectId idL = ObjectId.Parse(ProsledjenoIme);
+            collection.DeleteOne(x => x.Id == idL);
+
+            lekari = collection.Find(FilterDefinition<Lekar>.Empty).ToList();
+            
+            
 
             return RedirectToPage("./ObrisiLekar");
         }

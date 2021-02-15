@@ -25,6 +25,8 @@ namespace BazeApoteka.Pages
         public List<MongoDBRef> farmaceuti { get; set; }
         public IMongoCollection<Farmaceut> collectionF { get; set; }
         public IMongoCollection<Apoteka> collectionA { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
 
         public IActionResult OnGet([FromRoute] String id)
         {
@@ -56,8 +58,8 @@ namespace BazeApoteka.Pages
             var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka2.Id);
             var operation = Builders<Apoteka>.Update.Set(u => u.Farmaceuti, farmaceuti);
             database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
-
-            return RedirectToPage();
+            ok = true;
+            return Page();
         }
     }
 }

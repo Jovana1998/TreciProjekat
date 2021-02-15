@@ -15,6 +15,7 @@
             <div>
                 <div class="font-weight-bold">Ime lekara: @lek.Ime</div>
                 Prezime: @lek.Prezime
+                ID; @lek.Id
                 Ustanova gde radi: @lek.UstanovaGdeRadi
                 @if (lek.Pacijenti != null)
                 {
@@ -28,17 +29,14 @@
         }
     </div>
     <div>
-        Unesi ime lekara koga zelis izbrisati:
+        Unesi id lekara koga zelis izbrisati:
         <br />
-        Unesi ime:
+       
         <input type="text" id="id" asp-for="@Model.ProsledjenoIme" />
-        <br />
-        Unesi prezime:
-        <input type="text" id="id" asp-for="@Model.ProsledjenoPrezime" />
         <input type="submit" value="Obrisi lekara" asp-page-handler="Obrisi" />
 
     </div>
-    <div>*Morate uneti i ime i prezime </div>
+   
     <br />
     <div><input type="submit" value="Nazad" asp-page="./Admin" /></div>
 </form>

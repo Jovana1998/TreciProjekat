@@ -23,6 +23,8 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Farmaceut Farmaceut2 { get; set; }
         public IMongoCollection<Farmaceut> collection { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public void OnGet()
         {
         }
@@ -56,7 +58,9 @@ namespace BazeApoteka.Pages
                     database.GetCollection<Farmaceut>("farmaceuti").UpdateOne(res, operation);
                 }
             }
-            return RedirectToPage();
+            Farmaceut2 = collection.Find(x => x.Id == ObjectId.Parse(IdF)).FirstOrDefault();
+            ok = true;
+            return Page();
         }
     }
 }

@@ -19,7 +19,8 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Lekar Lekar { get; set; }
         public IMongoCollection<Lekar> collection { get; set; }
-        
+        [BindProperty]
+        public bool ok { get; set; }
 
         public IActionResult OnGet()
         {
@@ -43,7 +44,8 @@ namespace BazeApoteka.Pages
 
             collection.InsertOne(Lekar);
 
-            return RedirectToPage();
+            ok = true;
+            return Page();
         }
     }
 }

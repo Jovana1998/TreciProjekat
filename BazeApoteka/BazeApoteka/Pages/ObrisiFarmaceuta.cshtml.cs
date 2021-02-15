@@ -16,6 +16,8 @@ namespace BazeApoteka.Pages
 
         [BindProperty]
         public String Prosledjeno { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public IMongoCollection<Farmaceut> collection { get; set; }
         [BindProperty]
         public List<Farmaceut> farmaceuti { get; set; }
@@ -50,15 +52,13 @@ namespace BazeApoteka.Pages
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Farmaceut>("farmaceuti");
-            farmaceuti = collection.Find(x => x.Ime == Prosledjeno).ToList();
-            foreach (Farmaceut f in farmaceuti)
-            {
-                String idobrisi = f.Id.ToString();
-                ObjectId objectId = ObjectId.Parse(idobrisi);
-                collection.DeleteOne(x => x.Id == objectId);
-            }
-
-            return RedirectToPage("./ObrisiFarmaceuta");
+            ObjectId idF = ObjectId.Parse(Prosledjeno);
+           // farmaceuti = collection.Find(x => x.Id == idF).ToList();
+          
+           collection.DeleteOne(x => x.Id == idF);
+           ok=true;
+            farmaceuti = collection.Find(FilterDefinition<Farmaceut>.Empty).ToList();
+            return Page();
         }
     }
 }
