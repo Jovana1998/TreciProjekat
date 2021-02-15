@@ -3,6 +3,8 @@
 @{
 }
 <form method="post">
+    @if (!Model.ok)
+    {
     <div>
         <br />
         <h4>Izmena Apoteke</h4>
@@ -30,6 +32,11 @@
     </div>
     <br />
     <input type="submit" value="Azuriraj" asp-page-handler="Izmena" />
+    }
+    else
+    {
+        <div>Uspesno ste azurirali apoteku @Model.Apoteka.Naziv,na aresi: @Model.Apoteka.Adresa</div>
+    }
     <br />
     <div>_________________________________________</div>
     <input type="submit" value="Nazad" asp-page="./Admin" />

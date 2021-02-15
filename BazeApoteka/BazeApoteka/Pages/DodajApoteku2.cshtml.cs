@@ -21,9 +21,17 @@ namespace BazeApoteka.Pages
              return Page();
             
         }
-        
-        public IActionResult OnPostDodajFarmaceuta()
+        public IActionResult OnPost([FromRoute]String id)
+
         {
+            Prosledjeno = id;
+            return Page();
+
+        }
+
+        public IActionResult OnPostDodajFarmaceuta(String idF)
+        {
+            Prosledjeno = idF;
             String tt = Prosledjeno;
             return RedirectToPage("./DodajFarmaceuta",new { id=tt});
         }

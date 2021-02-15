@@ -26,13 +26,17 @@ namespace BazeApoteka.Pages
         public IMongoCollection<Apoteka> collectionA { get; set; }
         [BindProperty]
         public List<MongoDBRef> lekovii { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public IActionResult OnGet([FromRoute] String id)
         {
+            ok = false;
             Prosledjeno = id;
             return Page();
         }
         public IActionResult OnPost([FromRoute] String id)
         {
+            ok = false;
             Prosledjeno = id;
             return Page();
         }
@@ -46,7 +50,7 @@ namespace BazeApoteka.Pages
             collectionL = database.GetCollection<Lek>("lekovi");
             collectionA = database.GetCollection<Apoteka>("apoteke");
             Apoteka2 = collectionA.Find(x => x.Id == ObjectId.Parse(Prosledjeno)).FirstOrDefault();
-            //Lek.MojaApoteka = new MongoDBRef("apoteke", Apoteka2.Id);
+           
             Lek.MojaApoteka = Apoteka2;
             collectionL.InsertOne(Lek);
 
@@ -56,8 +60,8 @@ namespace BazeApoteka.Pages
             var res = Builders<Apoteka>.Filter.Eq(pd => pd.Id, Apoteka2.Id);
             var operation = Builders<Apoteka>.Update.Set(u => u.Lekovi, lekovii);
             database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation);
-
-            return RedirectToPage();
+            ok = true;
+            return Page();
         }
     }
 }

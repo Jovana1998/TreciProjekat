@@ -51,13 +51,12 @@ namespace BazeApoteka.Pages
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
             collection = database.GetCollection<Apoteka>("apoteke");
-            apoteke = collection.Find(x => x.Naziv == Prosledjeno).ToList();
-            foreach (Apoteka a in apoteke)
-            {
-                String idobrisi = a.Id.ToString();
+            Apoteka = collection.Find(x => x.RegistarskiBroj == Prosledjeno).FirstOrDefault();
+            
+                String idobrisi = Apoteka.Id.ToString();
                 ObjectId objectId = ObjectId.Parse(idobrisi);
                 collection.DeleteOne(x => x.Id == objectId);
-            }
+            
 
             return RedirectToPage("./ObrisiApoteku");
         }

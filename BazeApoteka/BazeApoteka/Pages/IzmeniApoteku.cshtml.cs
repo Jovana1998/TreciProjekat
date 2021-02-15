@@ -21,12 +21,16 @@ namespace BazeApoteka.Pages
         [BindProperty]
         public Apoteka Apoteka2 { get; set; }
         public IMongoCollection<Apoteka> collection { get; set; }
+        [BindProperty]
+        public bool ok { get; set; }
         public void OnGet()
         {
+            ok = true;
         }
 
         public IActionResult OnPostIzmena()
         {
+            
             var connectionString = "mongodb://localhost/?safe=true";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Apoteka3");
@@ -49,7 +53,8 @@ namespace BazeApoteka.Pages
                     database.GetCollection<Apoteka>("apoteke").UpdateOne(res, operation2);
                 }
             }
-            return RedirectToPage();
+            ok = true;
+            return Page();
         }
     }
 }

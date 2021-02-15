@@ -5,6 +5,8 @@
 }
 
     <form method="post">
+        @if(Model.ok)
+        {
         <input type="hidden" id="id" asp-for="@Model.Prosledjeno" />
         <div>Ime:</div>
         <input type="text" asp-for="@Model.Farmaceut.Ime" />
@@ -14,4 +16,10 @@
         <input type="text" asp-for="@Model.Farmaceut.Plata" />
 
         <input type="submit" value="Dodaj" asp-page-handler="Dodaj" asp-route-pom="@Model.Prosledjeno" />
+        }
+        else
+        { 
+        <div>Uspesno ste dodali farmaceuta @Model.Farmaceut.Ime, id: @Model.Farmaceut.Id</div>
+        <input type="submit" asp-page="./DodajApoteku2" asp-route-id="@Model.Apoteka.Id.ToString()" value="Nazad"/>
+        }
     </form>
