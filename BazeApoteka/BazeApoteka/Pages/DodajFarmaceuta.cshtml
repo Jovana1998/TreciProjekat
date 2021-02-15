@@ -19,7 +19,12 @@
         }
         else
         { 
-        <div>Uspesno ste dodali farmaceuta @Model.Farmaceut.Ime, id: @Model.Farmaceut.Id</div>
+        <div class="font-weight-bold">
+            <br />
+            Uspesno ste dodali farmaceuta @Model.Farmaceut.Ime @Model.Farmaceut.Prezime, id dodatog farmaceuta je @Model.Farmaceut.Id!
+            <br />
+        </div>
+        <br />
         <input type="submit" asp-page="./DodajApoteku2" asp-route-id="@Model.Apoteka.Id.ToString()" value="Nazad"/>
         }
     </form>
